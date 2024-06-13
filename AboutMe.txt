@@ -6,6 +6,9 @@ Programming Languages: HTML, CSS, JavaScript, TypeScript, PHP, Node.js, Golang
 Web Development: PHP (CodeIgniter, Laravel), Golang (Gin), Node.js
 Mobile App Development: React Native, Flutter (Dart)
 Version Control: Git, GitHub/GitLab
+Testing: Jest, Selenium
+DevOps: Docker, Kubernetes
+CI/CD: Jenkins, Travis CI
 Other Frameworks: LayaAir, Godot, Cocos (for game development)
 Soft Skills: Team Collaboration, Communication, Problem Solving, Time Management
 toe@mac:~$
