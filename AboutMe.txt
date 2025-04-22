@@ -1,4 +1,3 @@
-AboutMe.txt
 ✪ About Me
 I’m Toe Wai Lin, a passionate web developer with skills spanning various technologies. From front-end to back-end, I enjoy crafting solutions that make a positive impact.
 ✪ Skills
