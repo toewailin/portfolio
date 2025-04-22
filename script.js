@@ -5,17 +5,18 @@ var Typer = {
     file: 'AboutMe.txt',
     cursor: '<span class="blink-cursor">|</span>',
     init: function () {
-        // Set initial terminal prompt with no newline
-        $('#console').html('toe@mac:~$');
+        // Set the terminal prompt and command simulation (cat AboutMe.txt)
+        $('#console').html('toe@mac:~$cat AboutMe.txt<br/>');
 
+        // Load the file
         $.ajax({
             url: Typer.file,
             dataType: 'text',
-            success: function(data) {
+            success: function (data) {
                 Typer.text = data;
                 Typer.typing();
             },
-            error: function() {
+            error: function () {
                 console.error("Could not load file");
             }
         });
@@ -30,7 +31,7 @@ var Typer = {
                 $('#console').html(content.slice(0, -Typer.cursor.length));
             }
 
-            // Detect the [resume-download] tag and replace with styled link
+            // Detect custom tag: [resume-download]
             if (remaining.startsWith('[resume-download]')) {
                 $('#console').append(
                     `<a href="https://drive.google.com/file/d/1wiMTyQU9mHG5SSZJUbFN1-TrX29s3pcj/view?usp=sharing" target="_blank" style="color:#00d9ff; text-decoration:none;"><i class="fas fa-download"></i> Download Resume 📄</a><br/>`
@@ -42,7 +43,7 @@ var Typer = {
                 Typer.index++;
             }
 
-            // Add cursor if it's not already shown
+            // Add cursor if not already present
             let updatedContent = $('#console').html();
             if (!updatedContent.endsWith(Typer.cursor)) {
                 $('#console').append(Typer.cursor);
@@ -54,7 +55,7 @@ var Typer = {
     }
 };
 
-// Optional: clean URL detection utility
+// Optional: unused utility
 function replaceUrls(text) {
     var http = text.indexOf('http://');
     var space = text.indexOf('.me ', http);
@@ -67,5 +68,5 @@ function replaceUrls(text) {
     }
 }
 
-// Initialize typing
+// Start the animation
 Typer.init();
