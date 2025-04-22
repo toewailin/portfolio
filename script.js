@@ -5,10 +5,10 @@ var Typer = {
     file: 'AboutMe.txt',
     cursor: '<span class="blink-cursor">|</span>',
     init: function () {
-        // Simulate terminal prompt with command (no extra newline)
+        // Start with the terminal prompt + command
         $('#console').html('toe@mac:~$cat AboutMe.txt<br/>');
 
-        // Load the text content
+        // Load file contents
         $.ajax({
             url: Typer.file,
             dataType: 'text',
@@ -43,17 +43,19 @@ var Typer = {
                 Typer.index++;
             }
 
-            // Append blinking cursor during typing
+            // Append blinking cursor
             $('#console').append(Typer.cursor);
             $('#console').scrollTop($('#console')[0].scrollHeight);
             setTimeout(Typer.typing, 30);
         } else {
-            // Done typing — replace cursor with clean new prompt
+            // All text typed — show final prompt + blinking cursor
             let content = $('#console').html();
             if (content.endsWith(Typer.cursor)) {
                 $('#console').html(content.slice(0, -Typer.cursor.length));
             }
-            $('#console').append('<br/>toe@mac:~$');
+
+            // Final prompt with blinking cursor next to $
+            $('#console').append('<br/>toe@mac:~$' + Typer.cursor);
         }
     }
 };
