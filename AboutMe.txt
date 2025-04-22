@@ -1,7 +1,6 @@
 toe@mac:~$AboutMe.txt
 ✪ About Me
 I’m Toe Wai Lin, a passionate web developer with skills spanning various technologies. From front-end to back-end, I enjoy crafting solutions that make a positive impact.
-
 ✪ Skills
 Programming Languages: HTML, CSS, JavaScript, TypeScript, Node.js, Python, PHP, Golang  
 Web Development: PHP (Laravel, CodeIgniter), Golang (Gin), Node.js (Express), Python (FastAPI)  
@@ -9,12 +8,11 @@ Mobile App Development: React Native, Flutter (Dart)
 Version Control: Git, GitHub/GitLab  
 Cloud Services: AWS (Amazon Web Services)  
 DevOps: Docker, Kubernetes
+CI/CD: Jenkins, Travis CI
 Game Development Frameworks: LayaAir, Cocos
 Soft Skills: Team Collaboration, Communication, Problem Solving, Time Management  
-
 ✪ Contact  
 Email: toewailinbdl@gmail.com  
 Phone: +959791313361  
 [resume-download]
-
 toe@mac:~$
