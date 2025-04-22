@@ -37,10 +37,15 @@ var Typer = {
                 Typer.index++;
             }
     
-            // Add cursor
-            $('#console').append(Typer.cursor);
+            // Add cursor (only if not already at the end)
+            let updatedContent = $('#console').html();
+            if (!updatedContent.endsWith(Typer.cursor)) {
+                $('#console').append(Typer.cursor);
+            }
+            
             $('#console').scrollTop($('#console')[0].scrollHeight);
             setTimeout(Typer.typing, 30);
+
         }
     }
 };
