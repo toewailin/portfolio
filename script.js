@@ -57,7 +57,7 @@ var Typer = {
             }
     
             // Append a fresh prompt with the blinking cursor
-            $('#console').append('<br/>toe@mac:~$' + Typer.cursor);
+            $('#console').append('toe@mac:~$' + Typer.cursor);
         }
     }
 };
