@@ -8,6 +8,21 @@ body {
     overflow: hidden;
 }
 
+a {
+    padding: 6px 12px;
+    border: 1px solid #00d9ff;
+    border-radius: 4px;
+    color: #00d9ff;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+a:hover {
+    background-color: #00d9ff;
+    color: #000;
+}
 
 #console {
     width: 80%;
