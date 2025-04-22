@@ -4,11 +4,11 @@ var Typer = {
     speed: 3,
     file: 'AboutMe.txt',
     cursor: '<span class="blink-cursor">|</span>',
+    
     init: function () {
-        // Start with the terminal prompt + command
+        // Initial command line prompt
         $('#console').html('toe@mac:~$cat AboutMe.txt<br/>');
 
-        // Load file contents
         $.ajax({
             url: Typer.file,
             dataType: 'text',
@@ -17,16 +17,17 @@ var Typer = {
                 Typer.typing();
             },
             error: function () {
-                console.error("Could not load file");
+                $('#console').append('<br/><span style="color:red;">Error loading file.</span>');
             }
         });
     },
+
     typing: function () {
         if (Typer.index < Typer.text.length) {
             let remaining = Typer.text.substring(Typer.index);
             let content = $('#console').html();
 
-            // Remove existing cursor
+            // Remove cursor before appending
             if (content.endsWith(Typer.cursor)) {
                 $('#console').html(content.slice(0, -Typer.cursor.length));
             }
@@ -43,18 +44,16 @@ var Typer = {
                 Typer.index++;
             }
 
-            // Append blinking cursor
+            // Add cursor back
             $('#console').append(Typer.cursor);
             $('#console').scrollTop($('#console')[0].scrollHeight);
             setTimeout(Typer.typing, 30);
         } else {
-            // All text typed — show final prompt + blinking cursor
+            // End: new prompt with cursor at the same line
             let content = $('#console').html();
             if (content.endsWith(Typer.cursor)) {
                 $('#console').html(content.slice(0, -Typer.cursor.length));
             }
-
-            // Final prompt with blinking cursor next to $
             $('#console').append('<br/>toe@mac:~$' + Typer.cursor);
         }
     }
