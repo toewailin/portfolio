@@ -8,8 +8,7 @@ Web Development: PHP (Laravel, CodeIgniter), Golang (Gin), Node.js (Express), Py
 Mobile App Development: React Native, Flutter (Dart)  
 Version Control: Git, GitHub/GitLab  
 Cloud Services: AWS (Amazon Web Services)  
-DevOps: Docker, Kubernetes  
-CI/CD: Jenkins, Travis CI  
+DevOps: Docker, Kubernetes
 Game Development Frameworks: LayaAir, Cocos
 Soft Skills: Team Collaboration, Communication, Problem Solving, Time Management  
 
