@@ -5,6 +5,9 @@ var Typer = {
     file: 'AboutMe.txt',
     cursor: '<span class="blink-cursor">|</span>',
     init: function () {
+        // Set initial terminal prompt with no newline
+        $('#console').html('toe@mac:~$');
+
         $.ajax({
             url: Typer.file,
             dataType: 'text',
@@ -21,45 +24,48 @@ var Typer = {
         if (Typer.index < Typer.text.length) {
             let remaining = Typer.text.substring(Typer.index);
             let content = $('#console').html();
-    
+
             // Remove existing cursor
             if (content.endsWith(Typer.cursor)) {
                 $('#console').html(content.slice(0, -Typer.cursor.length));
             }
-    
-            // Detect the [resume-download] tag and replace with anchor link
+
+            // Detect the [resume-download] tag and replace with styled link
             if (remaining.startsWith('[resume-download]')) {
-                $('#console').append(`<a href="https://drive.google.com/file/d/1wiMTyQU9mHG5SSZJUbFN1-TrX29s3pcj/view?usp=sharing" target="_blank" style="color:#00d9ff; text-decoration:none;"><i class="fas fa-download"></i> Download Resume 📄</a><br/>`);
+                $('#console').append(
+                    `<a href="https://drive.google.com/file/d/1wiMTyQU9mHG5SSZJUbFN1-TrX29s3pcj/view?usp=sharing" target="_blank" style="color:#00d9ff; text-decoration:none;"><i class="fas fa-download"></i> Download Resume 📄</a><br/>`
+                );
                 Typer.index += '[resume-download]'.length;
             } else {
                 let nextChar = Typer.text.charAt(Typer.index);
                 $('#console').append(nextChar === '\n' ? '<br/>' : nextChar);
                 Typer.index++;
             }
-    
-            // Add cursor (only if not already at the end)
+
+            // Add cursor if it's not already shown
             let updatedContent = $('#console').html();
             if (!updatedContent.endsWith(Typer.cursor)) {
                 $('#console').append(Typer.cursor);
             }
-            
+
             $('#console').scrollTop($('#console')[0].scrollHeight);
             setTimeout(Typer.typing, 30);
-
         }
     }
 };
 
+// Optional: clean URL detection utility
 function replaceUrls(text) {
     var http = text.indexOf('http://');
     var space = text.indexOf('.me ', http);
-  
+
     if (space != -1) {
-      var url = text.slice(http, space - 1);
-      return text.replace(url, '<a href="' + url + '">' + url + '</a>');
+        var url = text.slice(http, space - 1);
+        return text.replace(url, '<a href="' + url + '">' + url + '</a>');
     } else {
-      return text;
+        return text;
     }
-  }
-  
+}
+
+// Initialize typing
 Typer.init();
