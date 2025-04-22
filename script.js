@@ -19,7 +19,7 @@ var Typer = {
     },
     typing: function () {
         if (Typer.index < Typer.text.length) {
-            let nextChar = Typer.text.charAt(Typer.index);
+            let remaining = Typer.text.substring(Typer.index);
             let content = $('#console').html();
     
             // Remove existing cursor
@@ -27,21 +27,18 @@ var Typer = {
                 $('#console').html(content.slice(0, -Typer.cursor.length));
             }
     
-            // Special handling for `[Download Resume 📄](...)`
-            if (Typer.text.substring(Typer.index).startsWith('[Download Resume 📄](')) {
-                let end = Typer.text.indexOf(')', Typer.index);
-                let linkText = 'Download Resume 📄';
-                let linkUrl = Typer.text.substring(Typer.text.indexOf('(', Typer.index) + 1, end);
-                $('#console').append(`<a href="${linkUrl}" target="_blank" style="color:#00d9ff;">${linkText}</a><br/>`);
-                Typer.index = end + 1;
+            // Detect the [resume-download] tag and replace with anchor link
+            if (remaining.startsWith('[resume-download]')) {
+                $('#console').append(`<a href="https://drive.google.com/file/d/1wiMTyQU9mHG5SSZJUbFN1-TrX29s3pcj/view?usp=sharing" target="_blank" style="color:#00d9ff; text-decoration:none;"><i class="fas fa-download"></i> Download Resume 📄</a><br/>`);
+                Typer.index += '[resume-download]'.length;
             } else {
+                let nextChar = Typer.text.charAt(Typer.index);
                 $('#console').append(nextChar === '\n' ? '<br/>' : nextChar);
                 Typer.index++;
             }
     
             // Add cursor
             $('#console').append(Typer.cursor);
-    
             $('#console').scrollTop($('#console')[0].scrollHeight);
             setTimeout(Typer.typing, 30);
         }
