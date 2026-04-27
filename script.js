@@ -34,7 +34,7 @@ var Typer = {
             // Handle custom [resume-download] tag
             if (remaining.startsWith('[resume-download]')) {
                 $('#console').append(
-                    `<a href="https://drive.google.com/file/d/1nSc7QHhmgwTt-Jv_9GlYZEIdRT1xOnS1/view?usp=sharing" target="_blank" style="color:#00d9ff; text-decoration:none;"><i class="fas fa-lock"></i> Request Resume Access 🔑</a>`
+                    `<a href="https://drive.google.com/file/d/1Op0fxk_vfFd9jArt3-d8kQNB6fVcT7Ku/view?usp=sharing" target="_blank" style="color:#00d9ff; text-decoration:none;"><i class="fas fa-lock"></i> Request Resume Access 🔑</a>`
                 );
                 Typer.index += '[resume-download]'.length;
             }else {
